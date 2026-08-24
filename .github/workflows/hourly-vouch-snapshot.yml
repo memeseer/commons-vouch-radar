@@ -2,7 +2,7 @@ name: Update vouch snapshot
 
 on:
   schedule:
-    - cron: '35 * * * *'
+    - cron: '15 * * * *'
   workflow_dispatch:
 
 permissions:
