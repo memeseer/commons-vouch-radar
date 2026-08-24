@@ -1,0 +1,15 @@
+{
+  "name": "commons-vouch-radar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check server.mjs",
+    "snapshot": "node scripts/build-snapshot.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

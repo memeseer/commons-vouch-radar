@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Commons vouch leaderboard and estimated vouches remaining.">
+  <title>Vouch Radar — Commons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="noise"></div>
+<header class="topbar shell">
+  <a class="brand" href="/"><span class="brand-mark">VR</span><span>Vouch Radar</span></a>
+  <a class="commons-link" href="https://commonsmade.com/vouch" target="_blank" rel="noreferrer">Commons ↗</a>
+</header>
+
+<main class="shell">
+  <section class="intro">
+    <div>
+      <div class="eyebrow">COMMONS · GENESIS</div>
+      <h1>Vouch leaderboard</h1>
+    </div>
+    <div class="status-stack">
+      <div class="updated-badge" id="collector-status">
+        <span class="status-dot"></span>
+        <span id="collector-label">Loading snapshot…</span>
+        <b id="collector-percent">0%</b>
+        <i><span id="collector-fill"></span></i>
+      </div>
+      <div class="accuracy-note">~95% coverage · scans top 20,000 accounts</div>
+    </div>
+  </section>
+
+  <section class="toolbar">
+    <form class="search" id="search-form">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4m2.4-5.1a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+      <input id="search-input" autocomplete="off" placeholder="Search name or @handle">
+      <kbd>/</kbd>
+    </form>
+    <div class="stats" id="stats">
+      <div><strong>—</strong><span>participants</span></div>
+      <div><strong>—</strong><span>ranked</span></div>
+      <div><strong>—</strong><span>vouch limit</span></div>
+    </div>
+  </section>
+
+  <section class="board">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Rank</th><th>Account</th><th>Points</th><th>Est. left</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="loading" id="loading"><span></span> Loading leaderboard…</div>
+    </div>
+    <div class="pagination">
+      <button id="prev">← Previous</button>
+      <span id="page-label">1 / —</span>
+      <button id="next">Next →</button>
+    </div>
+  </section>
+</main>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="drawer-close" id="drawer-close" aria-label="Close">×</button>
+  <div id="drawer-content"></div>
+</aside>
+
+<template id="row-template">
+  <tr class="user-row">
+    <td class="rank"></td>
+    <td><div class="person"><img alt=""><div><strong></strong><span></span></div></div></td>
+    <td class="points"></td>
+    <td><div class="remaining"><b></b><i></i></div></td>
+    <td><button class="open-user" aria-label="Open account">↗</button></td>
+  </tr>
+</template>
+<script type="module" src="/app.js"></script>
+</body></html>

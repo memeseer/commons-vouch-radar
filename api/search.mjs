@@ -1,0 +1,2 @@
+import { commons, status, usage, ok, fail } from './_shared.mjs';
+export default {async fetch(request){try{const url=new URL(request.url),q=String(url.searchParams.get('q')||'').trim().slice(0,80);if(!q)return ok({entries:[]});const [event,data]=await Promise.all([commons(''),commons('/leaderboard/search?q='+encodeURIComponent(q)+'&limit=40')]),supply=event.rules?.supply?.vouches??7;return ok({...data,collector:status(),entries:(data.entries||[]).map(entry=>({...entry,usage:usage(entry.x_handle,supply)}))})}catch(error){return fail(error)}}};

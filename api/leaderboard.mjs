@@ -1,0 +1,2 @@
+import { commons, status, usage, ok, fail } from './_shared.mjs';
+export default {async fetch(request){try{const url=new URL(request.url),offset=Math.max(0,Number(url.searchParams.get('offset')||0)),limit=Math.min(100,Math.max(10,Number(url.searchParams.get('limit')||50)));const [event,board]=await Promise.all([commons(''),commons('/leaderboard?offset='+offset+'&limit='+limit)]),supply=event.rules?.supply?.vouches??7;return ok({...board,collector:status(),entries:board.entries.map(entry=>({...entry,usage:usage(entry.x_handle,supply)}))})}catch(error){return fail(error)}}};
